@@ -1,7 +1,7 @@
 pub mod bloom;
 pub mod hex;
 pub mod movement;
-pub mod this_has_no_obvious_name_yet;
+pub mod position;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

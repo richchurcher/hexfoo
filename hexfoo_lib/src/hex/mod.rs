@@ -2,7 +2,7 @@ use bevy::prelude::*;
 
 use crate::movement::Velocity;
 
-const STARTING_VELOCITY: Vec3 = Vec3::new(0.0, 0.0, 1.0);
+const STARTING_VELOCITY: Vec3 = Vec3::new(1.0, 1.0, 1.0);
 
 #[derive(Bundle)]
 struct HexBundle {

@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-pub struct ThisHasNoObviousNameYetPlugin;
+pub struct PositionPlugin;
 
 #[derive(Component, Debug)]
 struct Position { x: f32, y: f32 }
@@ -21,14 +21,9 @@ fn position_reporter(query: Query<(Entity, &Position)>) {
     }
 }
 
-fn hex_spawner(mut commands: Commands) {
-    commands.spawn((Position { x: 0.0, y: 0.0 }, Velocity { x: 1.0, y: 1.0 }));
-}
-
-impl Plugin for ThisHasNoObviousNameYetPlugin {
+impl Plugin for PositionPlugin {
     fn build(&self, app: &mut App) {
-        info!("Building ThisHasNoObviousNameYetPlugin...");
-        app.add_systems(Startup, hex_spawner);
+        info!("Building PositionPlugin...");
         app.add_systems(Update, (position_updater, position_reporter));
     }
 }
