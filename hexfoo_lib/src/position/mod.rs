@@ -1,17 +1,22 @@
 use bevy::prelude::*;
 
+use crate::movement::Velocity;
+
 pub struct PositionPlugin;
 
 #[derive(Component, Debug)]
-struct Position { x: f32, y: f32 }
+pub struct Position { x: f32, y: f32 }
 
-#[derive(Component, Debug)]
-struct Velocity { x: f32, y: f32 }
+impl Position {
+    pub const fn new(x: f32, y: f32) -> Self {
+        Position { x, y }
+    }
+}
 
 fn position_updater(mut query: Query<(&mut Velocity, &mut Position)>) {
     for (velocity, mut position) in query.iter_mut() {
-        position.x += velocity.x;
-        position.y += velocity.y;
+        position.x += velocity.value.x;
+        position.y += velocity.value.y;
     }
 }
 
