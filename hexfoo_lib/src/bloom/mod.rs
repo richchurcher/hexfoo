@@ -91,8 +91,8 @@ fn update_bloom_settings(
     let text = &mut text.sections[0].value;
     let (_, mut bloom_direction) = hex.single_mut();
 
-    let bloom_max = 0.4;
-    let bloom_min = 0.1;
+    let bloom_max = 0.25;
+    let bloom_min = 0.05;
     match bloom_settings {
         (_, Some(mut bloom_settings)) => {
             *text = "bloom intensity: ".to_string();

@@ -5,7 +5,7 @@ use crate::movement::Velocity;
 pub struct PositionPlugin;
 
 #[derive(Component, Debug)]
-pub struct Position { x: f32, y: f32 }
+pub struct Position { pub x: f32, pub y: f32 }
 
 impl Position {
     pub const fn new(x: f32, y: f32) -> Self {
@@ -13,16 +13,16 @@ impl Position {
     }
 }
 
-fn position_updater(mut query: Query<(&mut Velocity, &mut Position)>) {
-    for (velocity, mut position) in query.iter_mut() {
-        position.x += velocity.value.x;
-        position.y += velocity.value.y;
+fn position_updater(mut query: Query<(&mut Velocity, &mut Transform)>, time: Res<Time>) {
+    for (velocity, mut transform) in query.iter_mut() {
+        transform.translation.x += velocity.value.x * time.delta_seconds();
+        transform.translation.y += velocity.value.y * time.delta_seconds();
     }
 }
 
-fn position_reporter(query: Query<(Entity, &Position)>) {
-    for (entity, position) in query.iter() {
-        println!("entity {:?} :: {:?}", entity, position);
+fn position_reporter(query: Query<(Entity, &Transform)>) {
+    for (entity, transform) in query.iter() {
+        println!("entity {:?} :: {:?}", entity, transform);
     }
 }
 
