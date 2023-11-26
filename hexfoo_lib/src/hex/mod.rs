@@ -53,25 +53,35 @@ fn hex_mover(
 
     let mut x_translation = 0.;
     let mut y_translation = 0.;
+    let mut z_rotation = 0.;
 
     if keyboard_input.pressed(KeyCode::W) {
-        y_translation += 50.0;
+        y_translation += 200.0;
     }
 
     if keyboard_input.pressed(KeyCode::A) {
-        x_translation -= 50.0;
+        x_translation -= 200.0;
     }
 
     if keyboard_input.pressed(KeyCode::S) {
-        y_translation -= 50.0;
+        y_translation -= 200.0;
     }
 
     if keyboard_input.pressed(KeyCode::D) {
-        x_translation += 50.0;
+        x_translation += 200.0;
+    }
+
+    if keyboard_input.pressed(KeyCode::E) {
+        z_rotation -= 5.;
+    }
+
+    if keyboard_input.pressed(KeyCode::Q) {
+        z_rotation += 5.;
     }
 
     transform.translation.x += x_translation * time.delta_seconds();
     transform.translation.y += y_translation * time.delta_seconds();
+    transform.rotate_z(z_rotation * 1. * time.delta_seconds());
 
     // bound the ship within the invisible level bounds
     // let extents = Vec3::from((BOUNDS / 2.0, 0.0));
