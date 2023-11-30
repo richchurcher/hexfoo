@@ -1,7 +1,5 @@
 use bevy::prelude::*;
 
-use crate::movement::Velocity;
-
 pub struct PositionPlugin;
 
 #[derive(Component, Debug)]

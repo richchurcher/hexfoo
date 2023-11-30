@@ -38,6 +38,24 @@ fn setup(
 
     commands.spawn(MaterialMesh2dBundle {
         mesh: meshes
+            .add(shape::RegularPolygon::new(100., 6).into())
+            .into(),
+        material: materials.add(ColorMaterial::from(Color::rgb(0.25, 0.4, 0.1))),
+        transform: Transform::from_translation(Vec3::new(200., 0., 0.)),
+        ..default()
+    });
+
+    commands.spawn(MaterialMesh2dBundle {
+        mesh: meshes
+            .add(shape::RegularPolygon::new(50., 6).into())
+            .into(),
+        material: materials.add(ColorMaterial::from(Color::rgb(0.25, 0.4, 0.1))),
+        transform: Transform::from_translation(Vec3::new(50., 0., 0.)),
+        ..default()
+    });
+
+    commands.spawn(MaterialMesh2dBundle {
+        mesh: meshes
             .add(shape::RegularPolygon::new(50., 6).into())
             .into(),
         material: materials.add(ColorMaterial::from(Color::rgb(0.25, 0.4, 0.1))),
